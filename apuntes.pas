@@ -1,3 +1,12 @@
+//para todos estos apuntes pueden usar consola de linux
+//o si estan en windows pueden usar tabby
+//algo a tener en cuenta para ejecutar tu codigo a la hora de ejecutarlo en la consola
+
+//   fpc "nombre del archivo.pas para crear el .exe"  ==> esto es para crear el .exe
+//   ./test.exe  ==> para ejecutar el .exe 
+
+
+
 //tipos de datos de pascal ---------------------------------------------------------
 
 
@@ -94,3 +103,30 @@ end. //fin
 
 
 //Estructuras de control de pascal------------------------------------------------------------------------
+
+// al decir bloque de codigo nos referimos a
+
+begin
+  // Bloque de código si la condición es verdadera
+end;
+
+
+
+if (condición) then //si o no
+  // Bloque de código si la condición es verdadera
+else
+  // Bloque de código si la condición es falsa
+
+
+while (condición) do  //mientras
+  // Bloque de código que se ejecuta mientras se cumple la condición
+
+repeat
+  // Bloque de código que se ejecuta al menos una vez
+until (condición);//por ejemplo var = 10 hasta que la variable no valga 10 se va a repetir
+
+
+
+for variable := valor_inicial to valor_final do     //1 to 10 do y se repeti del 1 al 10
+  // Bloque de código que se ejecuta en cada iteración
+
