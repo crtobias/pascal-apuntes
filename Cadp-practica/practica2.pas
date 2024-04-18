@@ -1,4 +1,4 @@
-//5 parte 2
+//5 parte 2////////////////////////////////////////////////////////////////////////////////////////////////
 program practica;
 
 function dobleResultado(num1: integer; num2: integer): boolean;
@@ -32,7 +32,7 @@ end.
 
 
 
-//6 parte 2
+//6 parte 2////////////////////////////////////////////////////////////////////////////////////////////////
 
 program practica;
 
@@ -105,4 +105,86 @@ begin
 end.
 
 
-// 7 parte 2
+// 7 parte 2 ////////////////////////////////////////////////////////////////////////////////////////////////
+//A)////////////////////////////////////////////////////////////////////////////////////////////////
+program practica;
+
+procedure Digitos(var numEntero: integer;var sumaDig:integer;var cantDig:integer);
+var
+    digito: integer;
+begin
+    sumaDig := 0; 
+    cantDig:=0;
+
+    while numEntero <> 0 do
+    begin
+    digito := numEntero mod 10; 
+    sumaDig := sumaDig + digito;      
+    numEntero := numEntero div 10;
+    cantDig:=cantDig+1;
+    end;
+    writeln('La suma de los digitos es: ', sumaDig);
+end;
+
+
+var
+numEntero:integer;
+cantDig:integer;
+sumaDig:integer;
+
+begin
+numEntero:=0;
+cantDig:=0;
+sumaDig:=0;
+
+writeln('ingrese numero entero');
+readln(numEntero);
+Digitos(numEntero , SumaDig , CantDig);
+writeln('cantidad de digitos ',cantDig,' y suma de digitos ',sumaDig,'')
+
+end.
+
+
+//B)////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+program practica;
+
+procedure Digitos(var numEntero: integer;var sumaDig:integer;var cantDig:integer);
+var
+digito: integer;
+begin
+
+while numEntero <> 0 do
+begin
+    digito := numEntero mod 10; 
+    sumaDig := sumaDig + digito;      
+    numEntero := numEntero div 10;
+    cantDig:=cantDig+1;
+end;
+writeln('La suma de los digitos es: ', sumaDig);
+end;
+
+
+var
+numEntero:integer;
+cantDig:integer;
+sumaDig:integer;
+i:integer;
+
+begin
+numEntero:=0;
+cantDig:=0;
+sumaDig:=0;
+
+for i := 1 to 3 do
+begin
+    writeln('ingrese numero entero');
+	readln(numEntero);
+	Digitos(numEntero , SumaDig , CantDig);
+end;
+
+writeln('cantidad de digitos ',cantDig,' y suma de digitos ',sumaDig,'')
+end.
+
+//8 parte 2////////////////////////////////////////////////////////////////////////////////////////////////
