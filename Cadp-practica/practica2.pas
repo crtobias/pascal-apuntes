@@ -188,3 +188,48 @@ writeln('cantidad de digitos ',cantDig,' y suma de digitos ',sumaDig,'')
 end.
 
 //8 parte 2////////////////////////////////////////////////////////////////////////////////////////////////
+
+program practica_modularizado;
+
+procedure SumaYCantidadDigitos(numEntero: integer; var sumaDig: integer; var cantImpares: integer);
+var
+  digito: integer;
+begin
+  sumaDig := 0;
+  cantImpares := 0;
+  
+  while numEntero <> 0 do
+  begin
+    digito := numEntero mod 10; 
+    if digito mod 2 <> 0 then
+      cantImpares := cantImpares + 1
+    else
+      sumaDig := sumaDig + digito;
+      
+    numEntero := numEntero div 10;
+  end;
+end;
+
+var
+  numEntero: integer;
+  sumaDig: integer;
+  cantImpares: integer;
+
+begin
+  repeat
+    Write('Ingrese un numero entero (1234 para terminar) y el rango puede estar entre -32768 a 32767: ');
+    Readln(numEntero);
+    
+    if numEntero <> 1234 then
+    begin
+      SumaYCantidadDigitos(numEntero, sumaDig, cantImpares);
+      Writeln('Suma de digitos pares: ', sumaDig);
+      Writeln('Cantidad de digitos impares: ', cantImpares);
+    end;
+  until numEntero = 1234;
+  
+end.
+
+//9 parte 2 //////////////////////////////////////////////////////////////////
+
+
