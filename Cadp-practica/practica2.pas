@@ -204,7 +204,7 @@ begin
     if digito mod 2 <> 0 then
       cantImpares := cantImpares + 1
     else
-      sumaDig := sumaDig + digito;
+      sumaDig := sumaDig + digito; 
       
     numEntero := numEntero div 10;
   end;
@@ -233,3 +233,78 @@ end.
 //9 parte 2 //////////////////////////////////////////////////////////////////
 
 
+//10
+
+
+
+
+program test;
+
+function esVocal(var flag: boolean): boolean;
+var
+    ch: char;
+begin
+    writeln('Ingrese un carácter:');
+    readln(ch);
+    if (upcase(ch) = 'A') or (upcase(ch) = 'E') or (upcase(ch) = 'I') or (upcase(ch) = 'O') or (upcase(ch) = 'U') then
+    begin
+        esVocal(flag);
+    end
+    else
+    begin
+        if(ch <> '$') then
+        begin
+            flag := false;
+            writeln('Fallo, no es $');
+        end;
+    end;
+end;
+
+function esNoVocal(var flag: boolean): boolean;
+var
+    ch: char;
+begin
+    writeln('Ingrese un carácter:');
+    readln(ch);
+    if (((ch >= 'A') and (ch <= 'Z')) or ((ch >= 'a') and (ch <= 'z'))) and
+       not ((upcase(ch) = 'A') or (upcase(ch) = 'E') or (upcase(ch) = 'I') or (upcase(ch) = 'O') or (upcase(ch) = 'U')) then
+    begin
+        esNoVocal(flag);
+    end
+    else
+    begin
+        if(ch <> '#') then
+        begin
+            flag := false;
+            writeln('Fallo, no es #');
+        end;
+    end;
+end;
+
+var
+    flag: boolean;
+begin
+    flag := true;
+    
+    if (flag=true) then
+		begin
+			esVocal(flag);
+		end;
+		
+	if(flag = true) then
+		begin 
+			esNoVocal(flag);
+		end;
+	
+	if(flag = true) then
+		writeln('se completo de manera correta el patron')
+    
+    if(flag<>true) then
+		writeln('hubo fallos en el patron')
+    
+    
+end.
+
+
+
+//
