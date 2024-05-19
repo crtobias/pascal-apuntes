@@ -13,6 +13,8 @@ nodo = record
     dato:jugador;
     sig: lista;
     end;
+
+
 procedure agregarAdelante(var L:lista; J:jugador);
     var
         nue:lista;
@@ -22,6 +24,8 @@ procedure agregarAdelante(var L:lista; J:jugador);
         nue^.sig := L; //realizo enlace con sig
         L:=nue; //actualizo el primero
 end;
+
+
 procedure cargarLista(var L:lista);
     var
         j:jugador;
@@ -35,20 +39,65 @@ procedure cargarLista(var L:lista);
         agregarAdelante(L,j)//agrego el nodo con jugador
 end;
 
+procedure DeleteDato(L:lista ; tag:string);
+    var
+    ant,act,dsp:lista;
+    begin
+    act:=L;
+    while act^.dato.tag <> tag do begin
+        ant:= act;
+        act:= act^.sig;
+        dsp:=act^.sig;
+    end;
 
+    if act^.dato.tag = tag then
+      begin
+        ant^.sig := dsp;
+        dispose(act);
+        act := nil;
+        writeln('dato eliminado');
+      end
+    else
+    begin
+        writeln('no se encontro el dato');
+    end;
+
+end;
+
+procedure ReadList(L:lista);
+    var
+        act :lista;
+    begin   
+        act := L;
+        while act <> nil do begin
+            writeln('niv :', act^.dato.nivel);
+            writeln('edad :', act^.dato.edad);
+            writeln('tag :', act^.dato.tag);
+            act := act^.sig
+        end
+    end;
 
 
 var //principal
 L:lista;
 begin
-L:=nil;
+
+L:=nil; //inicio mi lista en nil
+
 writeln('hola');
-cargarLista(L);
-cargarLista(L);
-cargarLista(L);
+
+cargarLista(L); //
+cargarLista(L);   //cargo tres datos en la lista
+cargarLista(L); //
 
 
 
-writeln('es :',L^.dato.nivel);
+ReadList(L); //read de lista
+
+DeleteDato(L, 'pepe'); //busca el dato pepe y elimina
 
 end.
+
+
+
+
