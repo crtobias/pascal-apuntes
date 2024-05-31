@@ -55,22 +55,8 @@ begin
     while L <> nil do begin
         Bpunto(L.dato , contador);
         Cpunto(L.dato , pant, pulgadas);
-        Apunto(L.dato.versionAnd , Ldos:listados); 
-        L:= ^L.sig
 
-        //lectura de versiones para punto A
-        if versionActual <> L.dato.versionAnd then
-        begin
-            writeln('cantidad de version :', versionActual , 'es : ',contadorVersiones);
-            versionActual := L.dato.versionAnd ;
-            contadorVersiones := 1;
-        end
-        else versionActual = L.dato.versionAnd then
-        begin
-            contadorVersiones := contadorVersiones+1;
-        end
-
-
+    L:= ^L.sig
     end;
 
     porcentajeCpunto(pant,pulgadas);
