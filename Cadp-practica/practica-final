@@ -96,14 +96,83 @@ begin
 end;
 
 
+
+procedure paresEimpares(J:jugador);
+var
+    Dpares:integer;
+    Dimpares:integer;
+    dni:integer;
+    dig:integer;
+begin
+    dni:= J.dni;
+    Dpares:=0;
+    Dimpares:=0;
+    dig:=0;
+    
+    while dni > 0 do begin
+        dig := dni mod 10;
+        if ((dni mod 2) = 0) then
+            begin
+            Dpares := Dpares+1;
+            end
+        else
+            begin
+            Dimpares := Dimpares+1;
+            end;    
+        dni := dni div 10;
+    end; 
+
+    writeln('el ',j.nombre,' tiene impares : ',Dimpares,' y pares tiene : ',Dpares);
+
+end;
+
 procedure leerLista(L:LJugador);
 begin
 
     while L <> nil do begin
         writeln('el nombre del jugador es : ', L^.dato.nombre );
+        writeln('el DNI del jugador es : ', L^.dato.dni );
+        paresEimpares(L^.dato);
         L := L^.sig;
     end;
     
+end;
+
+
+procedure InsertarOrdenado(var L:LJugador ; j:jugador);
+var 
+    ant:LJugador;
+    act:LJugador;
+    nue:LJugador;
+begin
+    new(nue);
+    nue^.dato := j;
+    ant:=L;
+    act:=L;
+
+    while (act <> nil) and (J.dni > act^.dato.dni) do begin
+        ant:= act;
+        act:= act^.sig;
+    end;
+
+    if (act = ant) then
+        begin
+            L:= nue;
+        end
+    else
+        begin
+            ant^.sig := nue;
+        end;
+    nue^.sig := act;
+end;
+
+
+procedure agregarOrdenado(var l:LJugador);
+var
+    J:jugador;
+begin
+        generarJugador(J);
+        InsertarOrdenado(L,J);
 end;
 
 
@@ -117,8 +186,7 @@ begin
     writeln('1');
     CargarListaAdelante(L,ult);
     leerLista(L);
-    CargarListaAtras(L,ult);
-    CargarListaAtras(L,ult);
+    agregarOrdenado(L);
     leerLista(L);
 
 end.
