@@ -102,15 +102,12 @@ var
     Dpares:integer;
     Dimpares:integer;
     dni:integer;
-    dig:integer;
 begin
     dni:= J.dni;
     Dpares:=0;
     Dimpares:=0;
-    dig:=0;
     
     while dni > 0 do begin
-        dig := dni mod 10;
         if ((dni mod 2) = 0) then
             begin
             Dpares := Dpares+1;
@@ -130,8 +127,8 @@ procedure leerLista(L:LJugador);
 begin
 
     while L <> nil do begin
-        writeln('el nombre del jugador es : ', L^.dato.nombre );
-        writeln('el DNI del jugador es : ', L^.dato.dni );
+        //writeln('el nombre del jugador es : ', L^.dato.nombre );
+        //writeln('el DNI del jugador es : ', L^.dato.dni );
         paresEimpares(L^.dato);
         L := L^.sig;
     end;
