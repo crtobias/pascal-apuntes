@@ -48,11 +48,22 @@ begin
 
 end;
 
+procedure BuscarNivel(a:arbol;var totalN:integer);
+begin
+	if a <> nil then begin
+		totalN := totalN + 1;
+		BuscarNivel(a^.ND,totalN);
+		BuscarNivel(a^.NI,totalN);
+	end;
+end;
+
 var
 a:arbol;
 num:integer;
 reco:boolean;
+totalN:integer;
 BEGIN
+	totalN:=0;
 	//creando y cargando el arbol
 	a:=nil;
 	writeln('ingrese  num');
@@ -73,5 +84,9 @@ BEGIN
 		writeln(reco)
 	end;
 	
+	BuscarNivel(a,totalN);
+	writeln('el total de nodos del arbol es  :',totalN);
+	
+	
+	
 END.
-
