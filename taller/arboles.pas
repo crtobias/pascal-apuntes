@@ -48,13 +48,31 @@ begin
 
 end;
 
-procedure BuscarNivel(a:arbol;var totalN:integer);
+procedure NodosTotales(a:arbol;var totalN:integer);
 begin
 	if a <> nil then begin
 		totalN := totalN + 1;
-		BuscarNivel(a^.ND,totalN);
-		BuscarNivel(a^.NI,totalN);
+		NodosTotales(a^.ND,totalN);
+		NodosTotales(a^.NI,totalN);
 	end;
+end;
+
+function AlturaArbol(a: arbol ):integer;
+var 
+	izquierda,derecha:integer;
+begin
+	if a=nil then
+		AlturaArbol :=0
+	else
+		begin
+			izquierda := AlturaArbol(a^.NI);
+			derecha := AlturaArbol(a^.ND);
+			
+			if izquierda > derecha then
+				AlturaArbol := 1 + izquierda
+			else
+				AlturaArbol := 1 + derecha;
+		end;
 end;
 
 var
@@ -62,7 +80,9 @@ a:arbol;
 num:integer;
 reco:boolean;
 totalN:integer;
+altura:integer;
 BEGIN
+	altura:=0;
 	totalN:=0;
 	//creando y cargando el arbol
 	a:=nil;
@@ -84,9 +104,10 @@ BEGIN
 		writeln(reco)
 	end;
 	
-	BuscarNivel(a,totalN);
+	NodosTotales(a,totalN);
 	writeln('el total de nodos del arbol es  :',totalN);
 	
-	
+	altura := AlturaArbol(a);
+	writeln(altura);
 	
 END.
