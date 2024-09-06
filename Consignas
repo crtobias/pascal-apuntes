@@ -1,0 +1,67 @@
+
+####  1
+  
+Un supermercado requiere el procesamiento de sus productos. De cada producto se
+conoce código, rubro (1..10), stock y precio unitario. Se pide:
+1
+TALLER DE PROGRAMACIÓN – Módulo Imperativo 2024
+a) Generar una estructura adecuada que permita agrupar los productos por rubro. A su
+vez, para cada rubro, se requiere que la búsqueda de un producto por código sea lo
+más eficiente posible. El ingreso finaliza con el código de producto igual a 0.
+b) Implementar un módulo que reciba la estructura generada en a), un rubro y un código
+de producto y retorne si dicho código existe o no para ese rubro.
+c) Implementar un módulo que reciba la estructura generada en a), y retorne, para cada
+rubro, el código y stock del producto con mayor código.
+d) Implementar un módulo que reciba la estructura generada en a), dos códigos y
+retorne, para cada rubro, la cantidad de productos con códigos entre los dos valores
+ingresados
+
+####  2
+
+Una agencia dedicada a la venta de autos ha organizado su stock y, tiene la información de
+los autos en venta. Implementar un programa que:
+a) Genere la información de los autos (patente, año de fabricación (2010..2018), marca y
+modelo, finalizando con marca ‘MMM’) y los almacene en dos estructuras de datos:
+i. Una estructura eficiente para la búsqueda por patente.
+ii. Una estructura eficiente para la búsqueda por marca. Para cada marca se deben
+almacenar todos juntos los autos pertenecientes a ella.
+b) Invoque a un módulo que reciba la estructura generado en a) i y una marca y retorne la
+cantidad de autos de dicha marca que posee la agencia.
+c) Invoque a un módulo que reciba la estructura generado en a) ii y una marca y retorne
+la cantidad de autos de dicha marca que posee la agencia.
+d) Invoque a un módulo que reciba el árbol generado en a) i y retorne una estructura con
+la información de los autos agrupados por año de fabricación.
+e) Invoque a un módulo que reciba el árbol generado en a) i y una patente y devuelva el
+modelo del auto con dicha patente.
+f) Invoque a un módulo que reciba el árbol generado en a) ii y una patente y devuelva el
+modelo del auto con dicha patente.
+
+
+#### 3
+*  Cargar un vector de numero 
+
+*  ordenar de menor a mayor y mayor a menor con dos modulos
+
+*  modulo para imprimir
+
+*  generar un modulo que reciba dos numero y que imprima de un numero al otro
+
+*  generar un modulo que recibe un numero y lo busque en el vector por busque dicotomica
+
+#### 4
+
+Un sistema de gestión de asignaturas y estudiantes necesita organizar la información sobre
+las asignaturas y los estudiantes inscritos en ellas. Implementa un programa en Pascal que realice las siguientes tareas:
+
+Carga de Datos:
+
+Implementa un módulo que construya un árbol binario de búsqueda. Cada nodo del árbol debe representar
+una asignatura e incluir una lista de estudiantes inscritos en esa asignatura. La carga de datos debe
+finalizar cuando se ingrese un código de asignatura igual a 0.
+Ordenamiento:
+
+Implementa un módulo que ordene el árbol binario de búsqueda por el código de asignatura.
+Búsqueda:
+
+Implementa un módulo que realice una búsqueda dicotómica en el árbol binario para encontrar una asignatura 
+específica dada su clave. Si se encuentra, muestra la lista de estudiantes inscritos; si no, indica que la asignatura no se encuentra en el árbol.
