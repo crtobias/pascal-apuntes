@@ -1,3 +1,5 @@
+#Tener en cuenta que hay fotos que no estan porque estaban en obsidian como memoria tiempo de ejecucion y algun diagra, dentro de poco lo tengo que subir a mi vlog
+
 *Este es un resumen de CADP el cual contiene la mayoria de contenidos vistos en la materia . solo para uso de repaso ya que hay muchos temas mas que toca a profundidad la materia que aca no estan porque son conceptos o muy simples o cosas muy teoricas como la modularizacion o conceptos basicos de que es un algoritmo y sus diferentes tipos*
 
 Recomendale usar ctrl + f para buscar una palabra o tema en especifico que estes intentenado estudiar.
