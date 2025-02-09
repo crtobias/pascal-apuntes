@@ -14,6 +14,8 @@
 a: informe el tipo de publicacion con mayor cantidad de publocaciones.
 b: informar para cada autor la cantidad de publicaciones presentadas.
 
+
+
 **RESPUESTA**:
 ```pas
 
@@ -153,3 +155,263 @@ END.
 ```
 
 
+**(2)** una empresa dispone de una estructura de datos con las ventas de su comercio, de cada venta se conoce numero de venta cantidad de profuctos y tipo de pago efectivo o tarjeta , Se pide implementar un programa que genere una segunda estructura con las ventas cuya cantidad de productos tenga al menos dos digitos pares . en la estrectura generada deben queda almacenada las ventas de tipo pago tarjeta antes que las de tipo  efectivo.
+
+```
+program untitled;
+type
+
+tipoPago = (efectivo, tarjeta);
+
+lista:^nodo;
+
+venta = record
+cant: integer
+numeroVenta:integer;
+tipo:tipoPago;
+end;
+
+nodo = record
+dato:venta;
+sig:lista;
+end;
+
+
+procedure agregarAdelante(var L:lista;D:venta ;var lUltima:lista);
+var
+nue:lista;
+begin
+new(nue);
+nue^.dato:=D;
+
+if l=nil then begin
+	L:=nue;
+	lUltima:=nue;
+end else begin
+	nue^.sig:=L;
+	L:=nue;
+end;
+
+end
+
+procedure agregarAtras(var lUltima:lista;D:venta ;var lNueva:lista);
+var
+nue:lista;
+begin
+new(nue);
+nue^.dato:=D;
+
+if lUltimo=nil then begin
+	lUltimo:=nue;
+	lNueva:=nue;
+end else begin
+	lUltimo^.sig:=nue;
+	lUltimo:=nue;
+end;
+
+end
+
+
+function dosDigPares(num:integer):boolean;
+var
+	cont:integer;
+	dig:integer;
+begin
+	cont:=0;
+	while num<>0 do begin
+		dig:= num mod 10;
+		if (dig mod 2) = 0 then
+			cont:=cont+1;
+		num := num div 10;
+	end
+	
+	dosDigPares := cont > 1;
+end;
+
+procedure generarListaNueva(L:lista; var lNue:lista;var lUlt:lista);
+begin
+
+	while L <> nil do begin
+		
+		if dosDigPares(L^.dato.cant) then begin
+			if(L^.dato.tipo = 'tarjeta') then begin
+				agregarAdelante(lNue,L^.dato,lUlt);
+			end else begin 
+				agregarAtras(lUlt,L^.dato,lNue);
+			end;
+		end;
+		
+		L:L^.sig
+	end
+end;
+
+
+var
+lOriginal:lista;
+lNueva:lista;
+lUltimo:lista;
+BEGIN
+lNueva:=nil;
+lUltimo:=nil;
+
+generarListaNueva(lOriginal,lNueva,lUltimo);
+
+END.
+```
+
+**(3)** una fabrica de autos nesecita un programa que adminioste las piezad de los diferentes modelos de autos que fabrica . de cada pieza se conoce: codigo de pieza , descripcion , cantidad de stock , costo , codifo del modelo 1..10, stock minimo. la lectura finaliza al leer el codigo de la pieza 9999 el cual debe procesarse.
+a) leer y lmacenar la informacion en una estructura adedecuaca de forma que queda almacenada en el orden que fue leida
+b) a partir de la estructura genera calcular
+* los 2 ciodigos de modelo de autis mas baratos de fabricar
+* el promedio de piezad de codifo de modelo 3 cuyo codigo empieza en 9
+
+```pas
+
+```
+
+**(4)** una escuela primatia nesecita un programa para administrar la informacion de preincripcione sal ciclo lectivo 2025. de cada preinscripcion se lee : DNI de alumno , apellid y nombre , fecha de nacimiento de alimno (dia,mes,ano), telefono de contacto , horario de preferencia 1..4 . la lectura finaliza cuando se lee el dni -1 (que no debe procesarse)
+* leer y almacena la informacion de la preincipociones en una estructura de datos adecuada , la informacion debe queda almacenada en el mismo orden en que fue leida.
+* a partir de su estructura de datos calcular lo sig:
+* los dos horarios ma requeridos por alumnos nacidos entre enero y junio
+* apellido nombre y telefeno de quello alumnos con dni compuesto solamente por digitos impares
+* procetaje de preinciciones  al horario de jornada completa 4
+```pas
+
+```
+
+**(5)** codigo libre ejercicio libre para practicar diferentes modulos 
+```pas
+program practica;
+
+type
+tipoArray = array[1..5] of integer;
+tipoEdad = 17..80;
+tipoFacultad = 0..5 ;
+
+lista = ^nodo;
+
+estudiante = record
+	id:integer;
+	nombre:string;
+	notas:tipoArray;
+	edad:tipoEdad;
+	facultad:tipoFacultad;
+end;
+
+
+nodo = record
+	dato:estudiante;
+	sig:lista;
+end;
+
+procedure cargarListaOrdenada(var L:lista;D:estudiante);
+var
+	nue,act,ant:lista;
+begin
+	new(nue);
+	nue^.dato:=D;
+	
+	act:=L;
+	ant:=L;
+	
+	while  (act<>nil) and (act^.dato.edad < D.edad) do begin 
+		ant:=act;
+		act:=act^.sig;
+	end;
+	
+	if act=ant then begin
+		L:=nue;
+	end else begin
+		ant^.sig:=nue;
+	end;
+	
+	nue^.sig:=act;
+end;
+
+procedure cargarEstudiante(var e:estudiante);
+begin
+	writeln('ingrese id');
+	readln(e.id);
+	writeln('nombre');
+	readln(e.nombre);
+	writeln('edad mayo a 17');
+	readln(e.edad);
+	writeln('facultad 1-5 o 0 para terminar');
+	readln(e.facultad);
+end;
+
+procedure generarLista(var L:lista);
+var
+	D:estudiante;
+begin
+	
+	cargarEstudiante(D);
+	while D.facultad <> 0 do begin
+		cargarListaOrdenada(L,D);
+		cargarEstudiante(D);
+	end;
+	writeln('terminaste de cargar los estudiantes');
+end;
+
+procedure recorrerArray(a:tipoArray);
+var
+	i:integer;
+begin
+	for i:=1 to 5 do begin
+		writeln('nota ',i,' es :', a[i]);
+	end;
+end;
+
+procedure recorrerLista(L:lista);
+begin
+	while L<>Nil do begin
+		writeln(' nombre: ',L^.dato.nombre ,' edad: ' ,L^.dato.edad,' id : ',L^.dato.id);
+		recorrerArray(l^.dato.notas);
+		L:=L^.sig;
+	end;
+end;
+
+procedure cargarArray(var A:tipoArray);
+var
+	i:integer;
+begin
+	for i:=1 to 5 do begin
+		writeln('ingrese nota :', i);
+		readln(A[i]);
+	end;
+end;
+
+procedure cargarNotas(L:lista);
+var
+	id:integer;
+begin
+	writeln('ingrese id para buscar');
+	readln(id);
+	
+	while (l<>nil) and (l^.dato.id<>id) do begin
+		l:=l^.sig;
+	end;
+	
+	if l^.dato.id = id then begin 
+		writeln('id encontrado');
+		cargarArray(l^.dato.notas)
+	end else begin
+		writeln('no se encontro el id');
+	end;
+	
+	
+end;
+
+var
+	L:lista;
+BEGIN
+	L:=nil;
+	generarLista(L);
+	recorrerLista(L);
+	cargarNotas(L);
+	cargarNotas(L);
+	recorrerLista(L);
+END.
+
+
+```
